@@ -13,9 +13,28 @@ function App() {
   const [cart, setCart] = useState([]);
 
   function addToCart(book) {
-    setCart([...cart, book])
+    setCart([...cart, { ...book, quantity: 1 }]);
   }
- 
+
+  function changeQuantity(book, quantity) {
+    setCart(
+      cart.map((item) => 
+         item.id === book.id ? {
+          
+            ...item,
+            quantity: +quantity,
+          
+        }
+        :item
+      ),
+    );
+  }
+
+  function removeItem(item){
+    setCart(cart.filter(book => book.id !== item.id))
+
+  }
+
   useEffect(() => {}, [cart]);
   return (
     <Router>
@@ -26,10 +45,16 @@ function App() {
           <Route path="/books" element={<Books books={books} />} />
           <Route
             path="/books/:id"
-            element={<Bookinfo books={books} addToCart={addToCart} cart={cart} />}
+            element={
+              <Bookinfo books={books} addToCart={addToCart} cart={cart} />
+            }
           />
-          <Route path="/cart" element={<Cart books={books} />} />
-          {/* cart={cart} changeQuantity={changeQuantity} */}
+          <Route
+            path="/cart"
+            element={
+              <Cart books={books} cart={cart} changeQuantity={changeQuantity} removeItem={removeItem}/>
+            }
+          />
         </Routes>
         <Footer />
       </div>
