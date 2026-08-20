@@ -26,7 +26,7 @@ function App() {
           <Route path="/books" element={<Books books={books} />} />
           <Route
             path="/books/:id"
-            element={<Bookinfo books={books} addToCart={addToCart} />}
+            element={<Bookinfo books={books} addToCart={addToCart} cart={cart} />}
           />
           <Route path="/cart" element={<Cart books={books} />} />
           {/* cart={cart} changeQuantity={changeQuantity} */}
