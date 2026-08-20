@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import Book from "../ui/Book";
 
-const Books = ({books: initialBooks}) => {
+const Books = ({ books: initialBooks }) => {
   const [books, setBooks] = useState(initialBooks);
-  function filterBooks(filter){
-    if (filter === 'Low_TO_HIGH'){
+  function filterBooks(filter) {
+    if (filter === "Low_TO_HIGH") {
       setBooks(
-      books.slice().sort((a, b) => (a.saleprice || a.originalPrice) - b.saleprice || a.originalPrice))
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (a.salePrice || a.originalPrice) -
+              (b.salePrice || a.originalPrice),
+          ),
+      );
+    }
+    if (filter === "HIGH_TO_LOW") {
+      setBooks(
+        books
+          .slice()
+          .sort(
+            (a, b) =>
+              (b.salePrice || b.originalPrice) -
+              (a.salePrice || a.originalPrice),
+          ),
+      );
+    }
+    if (filter === "RATING") {
+      setBooks(books.slice().sort((a, b) => b.rating - a.rating));
     }
   }
   return (
@@ -19,7 +40,11 @@ const Books = ({books: initialBooks}) => {
                 <h2 className="section__title" books_header--title>
                   All Books
                 </h2>
-                <select id="filter" defaultValue="DEFAULT" onChange={(event) =>filterBooks(event.target.value)}>
+                <select
+                  id="filter"
+                  defaultValue="DEFAULT"
+                  onChange={(event) => filterBooks(event.target.value)}
+                >
                   <option value="DEFAULT" disabled></option>
                   <option value="Low_TO_HIGH">Price, Low to High</option>
                   <option value="HIGH_TO_LOW">Price, High to Low</option>
