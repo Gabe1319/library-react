@@ -10,7 +10,7 @@ const Bookinfo = ({books}) => {
   const book = books.find(book => +book.id === +id);
   return (
     <div id="books__body">
-      <main className="books__main">
+      <main id="books__main">
         <div className="books__container">
           <div className="row">
             <div className="book__selected--top">
@@ -22,7 +22,7 @@ const Bookinfo = ({books}) => {
                   Books</h2></Link>
             </div>
             <div className="book__selected">
-              <figure className="book_selected--figured">
+              <figure className="book__selected--figure">
                 <img src={book.url} alt="" className="book__selected--img" />
               </figure>
               <div className="book__selected--description">
