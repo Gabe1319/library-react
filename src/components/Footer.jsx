@@ -13,9 +13,9 @@ const Footer = () => {
             </figure>
             </Link>
             <div Name="footer__list">
-              <Link to="/" className="foot__link">Hom</Link>
+              <Link to="/" className="foot__link">Home</Link>
               <span Name="footer__link no-cursor">About</span>
-              <Link to="/books" className="footer__link">Car</Link>
+              <Link to="/books" className="footer__link">Cart</Link>
             </div>
             <div className="footer__copyright">
               Copyright &copy; 2021 Library
