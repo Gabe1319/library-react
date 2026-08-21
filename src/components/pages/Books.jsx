@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Book from "../ui/Book";
 
 const Books = ({ books: initialBooks }) => {
